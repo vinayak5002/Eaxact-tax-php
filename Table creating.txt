@@ -1,4 +1,4 @@
---Admin Table Creation
+-- Admin Table Creation
 
 create table admin(
     admin_id int,
@@ -8,7 +8,7 @@ create table admin(
     primary key (admin_id)
 );
 
---Inserting values to admin table
+-- Inserting values to admin table
 
 insert into admin values(20401,'Abhirup Paul', 'cb.en.u4cse20401@cb.students.amrita.edu');
 insert into admin values(20419,'G Ganapathi', 'cb.en.u4cse20419@cb.students.amrita.edu');
@@ -16,7 +16,7 @@ insert into admin values(20465,'Srinivas Vinayak M', 'cb.en.u4cse20465@cb.studen
 insert into admin values(20467,'S Surya', 'cb.en.u4cse20467@cb.students.amrita.edu');
 select * from admin;
 
---Admin Password Table Creation
+-- Admin Password Table Creation
 
 Create table admin_password(
     admin_id int,
@@ -25,14 +25,14 @@ Create table admin_password(
     FOREIGN KEY (admin_id) REFERENCES admin(admin_id)
 );
 
---Inserting values to admin table
+-- Inserting values to admin table
 
 insert into admin_password values(20401,'Abhirup@cse20401');
 insert into admin_password values(20419,'Ganapathi@cse20419');
 insert into admin_password values(20465,'Vinayak@cse20465');
 insert into admin_password values(20467,'Surya@cse20467');
 
---Clients Table Creation
+-- Clients Table Creation
 
 create table clients(
     client_id int,
@@ -47,7 +47,7 @@ create table clients(
     primary key (client_id)
 );
 
--- Inserting values to Clients table
+--  Inserting values to Clients table
 
 insert into clients values(40102,'Abishek.M','M','2A0B4I0S2S','8523 6974 1258','cb.en.u4cse20402@cb.students.amrita.edu','8523697412', 1);
 insert into clients values(40103,'S Adithya','M','2A0D4I0T3H','9632 5874 1525','cb.en.u4cse20403@cb.students.amrita.edu','9632587415', 1);
@@ -60,9 +60,9 @@ insert into clients values(40109,'Bhashyam Sree Darshan','M','B2H0A4S0H9','9547 
 insert into clients values(40110,'BHYRAVARAPU NANDAGOPAL','M','B2H0Y4R1A0','6258 1473 9901','cb.en.u4cse20410@cb.students.amrita.edu','6258147399', 1);
 insert into clients values(40111,'Byrapureddy Sahithi','F','B2Y0R4A1P1','8855 1162 3511','cb.en.u4cse20411@cb.students.amrita.edu','8855116235', 1);
 
--- 
+--  
 
---  Clients Password Table Creation
+--   Clients Password Table Creation
 
 create table client_password(
     client_id int,
@@ -71,7 +71,7 @@ create table client_password(
     FOREIGN KEY (client_id) REFERENCES clients(client_id)
 );
 
--- Inserting values to Clients Password table
+--  Inserting values to Clients Password table
 
 insert into client_password values(40102,'Abishek@20402');
 insert into client_password values(40103,'Adithya@20403');
@@ -84,7 +84,7 @@ insert into client_password values(40109,'Darshan@20409');
 insert into client_password values(40110,'NANDAGOPAL@20410');
 insert into client_password values(40111,'Sahithi@20411');
 
--- Income Tax Rates Table Creation
+--  Income Tax Rates Table Creation
 
 create table income_tax_rates(
     category varchar(5),
@@ -99,7 +99,7 @@ insert into income_tax_rates values ('is3', 4);
 insert into income_tax_rates values ('is4', 5);
 
 
--- Source of Income Table Creation
+--  Source of Income Table Creation
 
 create table sources_of_income(
     client_id int,
@@ -111,7 +111,7 @@ create table sources_of_income(
     FOREIGN KEY (category) REFERENCES income_tax_rates(category)
 );
 
--- Inserting values to Sources of income table
+--  Inserting values to Sources of income table
 
 insert into sources_of_income values(40102, 'is1', 12, 70000);
 insert into sources_of_income values(40103, 'is2', 12, 120000);
@@ -129,7 +129,7 @@ insert into sources_of_income values(40110, 'is1', 12, 890000);
 insert into sources_of_income values(40111, 'is2', 12, 100000);
 
 
--- Propoerties Table Creation
+--  Propoerties Table Creation
 
 create table properties(
     client_id int,
@@ -157,7 +157,7 @@ insert into properties values(40109, 'kanchipuram falt', 208000, 4);
 insert into properties values(40110, 'mumbai flat', 500000, 7);
 insert into properties values(40111, 'hyd flat', 400000, 3);
 
--- Tax Return Table Creation
+--  Tax Return Table Creation
 
 create table tax_return(
     client_id int,
@@ -199,7 +199,7 @@ insert into tax_return values(40111, 1200000, 36000);
 insert into tax_return values(40111, 400000, 12000);
 
 
--- Meeting Table Creation
+--  Meeting Table Creation
 
 create table meetings(
     meeting_id int,
@@ -223,7 +223,7 @@ insert into meetings values(9102, 20401, 40102, '22/2/22','3:30 pm');
 insert into meetings values(9103, 20401, 40103, '11/1/22','5:30 pm');
 
 
--- Net Annual Tax  Table Creation
+--  Net Annual Tax  Table Creation
 
 create table net_annual_tax(
     client_id int,
@@ -243,7 +243,7 @@ insert into net_annual_tax values(40109, 114300);
 insert into net_annual_tax values(40110, 248600);
 insert into net_annual_tax values(40111, 48000);
 
--- status Tax Rates Table Creation
+--  status Tax Rates Table Creation
 
 create table status(
     client_id int,
@@ -266,7 +266,7 @@ insert into status values(40110, 41433, 6, 4);
 insert into status values(40111, 16000, 3, 2);
 
 
--- Displaying all tables;
+--  Displaying all tables;
 Select * from clients;
 Select * from client_password;
 Select * from admin;
@@ -279,32 +279,32 @@ Select * from meetings;
 Select * from net_annual_tax;
 Select * from status;
 
---  command for calculating nex tax amount for a client_id
+--   command for calculating nex tax amount for a client_id
 Select sum(collection_count * monthly_income * (income_tax_rate/100)) net_tax_amount from
 (Select * from sources_of_income where client_id = 40108) salary, income_tax_rates IT where
 salary.category = IT.category ;
 
---command for getting calculated values in properties
+-- command for getting calculated values in properties
 select client_id, value, value*(property_tax_rate/100) tax_amount from properties;
 
---command for getting tax on each income of each client_id
+-- command for getting tax on each income of each client_id
 Select client_id, collection_count * monthly_income annual_income, collection_count * monthly_income * (income_tax_rate/100) tax_amounts
 from (Select * from sources_of_income) salary, income_tax_rates IT where
 salary.category = IT.category;
 
--- clear client approval:
+--  clear client approval:
 UPDATE `clients` SET approval = 0 WHERE client_id = 40105;
 DELETE FROM `net_annual_tax` where client_id = 40105;
 DELETE FROM `tax_return` where client_id = 40105;
 DELETE FROM `property_tax_return` where client_id = 40105;
 
--- check client calculation
+--  check client calculation
 SELECT * from `net_annual_tax` where client_id = '40105';
 SELECT * FROM `tax_return` WHERE client_id = '40105';
 SELECT * FROM `property_tax_return` where client_id = '40105';
 
 
--- dsfl
+--  dsfl
 DELETE from `client_password` where client_id = 40112;
 DELETE from `status` where client_id = 40112;
 DELETE from `properties` where client_id = 40112;
