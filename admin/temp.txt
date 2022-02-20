@@ -1,0 +1,315 @@
+--Admin Table Creation
+
+create table admin(
+    admin_id int,
+    name varchar(25),
+    email varchar(50),
+
+    primary key (admin_id)
+);
+
+--Inserting values to admin table
+
+insert into admin values(20401,'Abhirup Paul', 'cb.en.u4cse20401@cb.students.amrita.edu');
+insert into admin values(20419,'G Ganapathi', 'cb.en.u4cse20419@cb.students.amrita.edu');
+insert into admin values(20465,'Srinivas Vinayak M', 'cb.en.u4cse20465@cb.students.amrita.edu');
+insert into admin values(20467,'S Surya', 'cb.en.u4cse20467@cb.students.amrita.edu');
+select * from admin;
+
+--Admin Password Table Creation
+
+Create table admin_password(
+    admin_id int,
+    admin_password varchar(20),
+
+    FOREIGN KEY (admin_id) REFERENCES admin(admin_id)
+);
+
+--Inserting values to admin table
+
+insert into admin_password values(20401,'Abhirup@cse20401');
+insert into admin_password values(20419,'Ganapathi@cse20419');
+insert into admin_password values(20465,'Vinayak@cse20465');
+insert into admin_password values(20467,'Surya@cse20467');
+
+--Clients Table Creation
+
+create table clients(
+    client_id int,
+    name varchar(30),
+    gender varchar(1),
+    pan_number varchar(10),
+    aadhaar_number varchar(15),
+    email varchar(50),
+    phone varchar(10),
+    approval int,
+
+    primary key (client_id)
+);
+
+-- Inserting values to Clients table
+
+insert into clients values(40102,'Abishek.M','M','2A0B4I0S2S','8523 6974 1258','cb.en.u4cse20402@cb.students.amrita.edu','8523697412', 1);
+insert into clients values(40103,'S Adithya','M','2A0D4I0T3H','9632 5874 1525','cb.en.u4cse20403@cb.students.amrita.edu','9632587415', 1);
+insert into clients values(40104,'T S Aishwarya','F','2A0I4S0H4W','9874 5632 0185','cb.en.u4cse20404@cb.students.amrita.edu','9874563201', 1);
+insert into clients values(40105,'Akash R Prabhu','M','2A0K4A0S5H','9514 8702 3623','cb.en.u4cse20405@cb.students.amrita.edu','9514870236', 1);
+insert into clients values(40106,'ALA DATTA SAI KUMAR','M','2A0L4A0D6A','7532 0148 6932','cb.en.u4cse20406@cb.students.amrita.edu','7532014869', 1);
+insert into clients values(40107,'Archana Ganapathy','F','2A0R4C0H7A','7893 2415 6674','cb.en.u4cse20407@cb.students.amrita.edu','7893241566', 1);
+insert into clients values(40108,'Banda Charith Sai','M','B2A0N4D0A8','7488 6521 0358','cb.en.u4cse20408@cb.students.amrita.edu','7488652103', 1);
+insert into clients values(40109,'Bhashyam Sree Darshan','M','B2H0A4S0H9','9547 8425 6912','cb.en.u4cse20409@cb.students.amrita.edu','9547842569', 1);
+insert into clients values(40110,'BHYRAVARAPU NANDAGOPAL','M','B2H0Y4R1A0','6258 1473 9901','cb.en.u4cse20410@cb.students.amrita.edu','6258147399', 1);
+insert into clients values(40111,'Byrapureddy Sahithi','F','B2Y0R4A1P1','8855 1162 3511','cb.en.u4cse20411@cb.students.amrita.edu','8855116235', 1);
+
+-- 
+
+--  Clients Password Table Creation
+
+create table client_password(
+    client_id int,
+    client_password varchar(25),
+    
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+-- Inserting values to Clients Password table
+
+insert into client_password values(40102,'Abishek@20402');
+insert into client_password values(40103,'Adithya@20403');
+insert into client_password values(40104,'Aishwarya@20404');
+insert into client_password values(40105,'Akash@20405');
+insert into client_password values(40106,'DATTA SAI@20406');
+insert into client_password values(40107,'Archana@20407');
+insert into client_password values(40108,'Charith@20408');
+insert into client_password values(40109,'Darshan@20409');
+insert into client_password values(40110,'NANDAGOPAL@20410');
+insert into client_password values(40111,'Sahithi@20411');
+
+-- Income Tax Rates Table Creation
+
+create table income_tax_rates(
+    category varchar(5),
+    income_tax_rate int,
+    
+    primary key (category)
+);
+
+insert into income_tax_rates values ('is1', 2);
+insert into income_tax_rates values ('is2', 3);
+insert into income_tax_rates values ('is3', 4);
+insert into income_tax_rates values ('is4', 5);
+
+
+-- Source of Income Table Creation
+
+create table sources_of_income(
+    client_id int,
+    category varchar(20),
+    collection_count int,
+    monthly_income int,
+
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    FOREIGN KEY (category) REFERENCES income_tax_rates(category)
+);
+
+-- Inserting values to Sources of income table
+
+insert into sources_of_income values(40102, 'is1', 12, 70000);
+insert into sources_of_income values(40103, 'is2', 12, 120000);
+insert into sources_of_income values(40103, 'is1', 12, 10000);
+insert into sources_of_income values(40104, 'is2', 12, 115000);
+insert into sources_of_income values(40105, 'is2', 11, 140000);
+insert into sources_of_income values(40105, 'is1', 6, 10000);
+insert into sources_of_income values(40106, 'is1', 12, 90000);
+insert into sources_of_income values(40107, 'is1', 10, 90000);
+insert into sources_of_income values(40108, 'is3', 12, 180000);
+insert into sources_of_income values(40108, 'is1', 2, 12000);
+insert into sources_of_income values(40109, 'is3', 12, 215000);
+insert into sources_of_income values(40109, 'is1', 5, 15000);
+insert into sources_of_income values(40110, 'is1', 12, 890000);
+insert into sources_of_income values(40111, 'is2', 12, 100000);
+
+
+-- Propoerties Table Creation
+
+create table properties(
+    client_id int,
+    name varchar(25),
+    value int,
+    property_tax_rate int,
+    
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+insert into properties values(40102, 'hyd house', 340000, 3);
+insert into properties values(40103, 'kanpur flat', 102000, 1);
+insert into properties values(40103, 'chennai plot', 302000, 5);
+insert into properties values(40104, 'kadapa flat', 210000, 5);
+insert into properties values(40105, 'mangalore house', 320000, 2);
+insert into properties values(40105, 'mysore plot', 160000, 1);
+insert into properties values(40105, 'mandats house', 350000, 4);
+insert into properties values(40106, 'banglore flat', 400000, 7);
+insert into properties values(40107, 'ramnager house', 124000, 1);
+insert into properties values(40108, 'udupi flat', 280000, 3);
+insert into properties values(40108, 'hassan house', 420000, 8);
+insert into properties values(40108, 'nillgiri plot', 140000, 2);
+insert into properties values(40109, 'nagpur house', 128000, 1);
+insert into properties values(40109, 'kanchipuram falt', 208000, 4);
+insert into properties values(40110, 'mumbai flat', 500000, 7);
+insert into properties values(40111, 'hyd flat', 400000, 3);
+
+-- Tax Return Table Creation
+
+create table tax_return(
+    client_id int,
+    annual_income int,
+    income_tax_amount int,
+    
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+insert into tax_return values(40102, 840000, 16800);
+insert into tax_return values(40102, 340000, 10200);
+insert into tax_return values(40103, 1440000, 43200);
+insert into tax_return values(40103, 120000, 2400);
+insert into tax_return values(40103, 102000, 1020);
+insert into tax_return values(40103, 200000, 4000);
+insert into tax_return values(40104, 1380000, 4100);
+insert into tax_return values(40104, 210000, 10500);
+insert into tax_return values(40105, 1540000, 46200);
+insert into tax_return values(40105, 60000, 1200);
+insert into tax_return values(40105, 320000, 6400);
+insert into tax_return values(40105, 400000, 28000);
+insert into tax_return values(40105, 350000, 14000);
+insert into tax_return values(40106, 1080000, 21600);
+insert into tax_return values(40106, 400000, 28000);
+insert into tax_return values(40107, 900000, 18000);
+insert into tax_return values(40107, 124000, 1240);
+insert into tax_return values(40108, 2160000, 86400);
+insert into tax_return values(40108, 24000, 480);
+insert into tax_return values(40108, 280000, 8400);
+insert into tax_return values(40108, 420000, 33600);
+insert into tax_return values(40108, 140000, 2800);
+insert into tax_return values(40109, 2580000, 103200);
+insert into tax_return values(40109, 75000, 1500);
+insert into tax_return values(40109, 128000, 1280);
+insert into tax_return values(40109, 208000, 8320);
+insert into tax_return values(40110, 10680000, 213600);
+insert into tax_return values(40110, 500000, 35000);
+insert into tax_return values(40111, 1200000, 36000);
+insert into tax_return values(40111, 400000, 12000);
+
+
+-- Meeting Table Creation
+
+create table meetings(
+    meeting_id int,
+    admin_id int,
+    client_id int,
+    date_ varchar(10),
+    time varchar(10),
+
+    PRIMARY KEY (meeting_id),
+    FOREIGN KEY (admin_id) REFERENCES admin (admin_id),
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+insert into meetings values(1906, 20419, 40106, '3/1/22','3:30 pm');
+insert into meetings values(1909, 20419, 40109, '3/1/22','5:30 pm');
+insert into meetings values(6511, 20465, 40111, '10/2/22','3:30 pm');
+insert into meetings values(6510, 20465, 40110, '12/2/22','5:30 pm');
+insert into meetings values(6704, 20467, 40104, '12/1/22','3:30 pm');
+insert into meetings values(6705, 20467, 40106, '14/2/22','5:30 pm');
+insert into meetings values(9102, 20401, 40102, '22/2/22','3:30 pm');
+insert into meetings values(9103, 20401, 40103, '11/1/22','5:30 pm');
+
+
+-- Net Annual Tax  Table Creation
+
+create table net_annual_tax(
+    client_id int,
+    net_tax_amount int,
+    
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+insert into net_annual_tax values(40102, 27000);
+insert into net_annual_tax values(40103, 50620);
+insert into net_annual_tax values(40104, 14600);
+insert into net_annual_tax values(40105, 95800);
+insert into net_annual_tax values(40106, 49600);
+insert into net_annual_tax values(40107, 19240);
+insert into net_annual_tax values(40108, 131680);
+insert into net_annual_tax values(40109, 114300);
+insert into net_annual_tax values(40110, 248600);
+insert into net_annual_tax values(40111, 48000);
+
+-- status Tax Rates Table Creation
+
+create table status(
+    client_id int,
+    set_amount int,
+    sets_opted int,
+    sets_completed int,
+    
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+insert into status values(40102, 9000, 3, 2);
+insert into status values(40103, 25310, 2, 1);
+insert into status values(40104, 7300, 2, 1);
+insert into status values(40105, 31933, 3, 0);
+insert into status values(40106, 24800, 2, 1);
+insert into status values(40107, 19240, 1, 1);
+insert into status values(40108, 26336, 5, 3);
+insert into status values(40109, 28575, 4, 2);
+insert into status values(40110, 41433, 6, 4);
+insert into status values(40111, 16000, 3, 2);
+
+
+-- Displaying all tables;
+Select * from clients;
+Select * from client_password;
+Select * from admin;
+Select * from admin_password;
+Select * from income_tax_rates;
+Select * from sources_of_income;
+Select * from properties;
+Select * from tax_return;
+Select * from meetings;
+Select * from net_annual_tax;
+Select * from status;
+
+--  command for calculating nex tax amount for a client_id
+Select sum(collection_count * monthly_income * (income_tax_rate/100)) net_tax_amount from
+(Select * from sources_of_income where client_id = 40108) salary, income_tax_rates IT where
+salary.category = IT.category ;
+
+--command for getting calculated values in properties
+select client_id, value, value*(property_tax_rate/100) tax_amount from properties;
+
+--command for getting tax on each income of each client_id
+Select client_id, collection_count * monthly_income annual_income, collection_count * monthly_income * (income_tax_rate/100) tax_amounts
+from (Select * from sources_of_income) salary, income_tax_rates IT where
+salary.category = IT.category;
+
+-- clear client approval:
+UPDATE `clients` SET approval = 0 WHERE client_id = 40105;
+DELETE FROM `net_annual_tax` where client_id = 40105;
+DELETE FROM `tax_return` where client_id = 40105;
+DELETE FROM `property_tax_return` where client_id = 40105;
+
+-- check client calculation
+SELECT * from `net_annual_tax` where client_id = '40105';
+SELECT * FROM `tax_return` WHERE client_id = '40105';
+SELECT * FROM `property_tax_return` where client_id = '40105';
+
+
+-- dsfl
+DELETE from `client_password` where client_id = 40112;
+DELETE from `status` where client_id = 40112;
+DELETE from `properties` where client_id = 40112;
+DELETE from `sources_of_income` where client_id = 40112;
+DELETE from `net_annual_tax` where client_id = 40112;
+DELETE from `property_tax_return` where client_id = 40112;
+DELETE from `tax_return` where client_id = 40112;
+DELETE from `documents` where client_id = 40112;

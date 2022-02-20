@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background-color: rgb(211, 0, 0);
+  background-image: url("https://www.freegreatpicture.com/files/146/24885-colorful-high-resolution-background.jpg");
+}
+
+.box {
+  background-color: aliceblue;
+  margin: 5% 30%;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.user {
+  color: rgb(255, 255, 255);
+}
+
+#main {
+  display: flex;
+}
+
+.card1 {
+  background-color: azure;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.card2 {
+  background-color: azure;
+  padding: 20px;
+  margin: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.c2-content {
+  margin-left: 25px;
+}
+
+.date {
+  font-size: 1.25em;
+}
+
+.headline {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.news1 {
+  padding-bottom: 25px;
+}

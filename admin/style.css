@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    background-color: rgb(211, 0, 0);
+    background-image: url("https://media.istockphoto.com/photos/abstract-blue-background-minimal-geometric-background-for-use-in-picture-id1221025677?b=1&k=20&m=1221025677&s=170667a&w=0&h=7ifCf2jcgMPJEXQ_1VS09j3VbTq6Yu_lWUAbOnBHkDY=");
+}
+
+.box{
+    background-color: antiquewhite;
+    margin: 6% 25%;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+p{
+    font-size: 20px;
+}
+
+.user{
+    color: rgb(255, 255, 255);
+}
+
+#main {
+    display: flex;
+}
+
+.card1{
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card2{
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.c2-content{
+    margin-left: 25px;
+}
+
+.date{
+    font-size: 1.25em;
+}
+
+.headline{
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.news1{
+    padding-bottom: 25px;
+}
